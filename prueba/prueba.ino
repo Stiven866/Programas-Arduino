@@ -6,7 +6,11 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available() > 0) {
+  holita();
+}
+
+void holita(){
+    if (Serial.available() > 0) {
     tecla = Serial.read();
     if(tecla == 'a'){
       resultado = a + b;
@@ -21,5 +25,4 @@ void loop() {
     Serial.print("El resultado es: ");
     Serial.println(resultado);
   }
-  
 }
