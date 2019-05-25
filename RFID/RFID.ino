@@ -1,7 +1,7 @@
 #include <SPI.h>
 #include <MFRC522.h>
 #define SS_PIN 53
-#define RST_PIN 49
+#define RST_PIN 2
 int tags [4] = {0x83, 0x7D, 0x23, 0xF0};
 bool val;
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Instance of the class
@@ -33,11 +33,10 @@ void loop() {
       mfrc522.PICC_HaltA();
     }
   }
-//  if(val==true){
-//    Serial.print("Bienvenido");
-//  }else{
-//    Serial.print(":(");
-//  }
+  if(val==true){
+    Serial.println("Bienvenido");
+    val=false;
+  }
 
 
 }
