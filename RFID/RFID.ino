@@ -2,7 +2,9 @@
 #include <MFRC522.h>
 #define SS_PIN 53
 #define RST_PIN 2
-int tags [4] = {0x83, 0x7D, 0x23, 0xF0};
+int tags_1 [4] = {0xC6, 0x5A, 0x78, 0x23}; 
+int tags_2 [4] = {0xC6, 0x5A, 0x78, 0x24};
+
 bool val;
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Instance of the class
 void setup() {
@@ -21,8 +23,8 @@ void loop() {
       for (byte i = 0; i < mfrc522.uid.size; i++) {
         Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
         Serial.print(mfrc522.uid.uidByte[i], HEX);
-
-        if (mfrc522.uid.uidByte[i] == tags[i]) {
+        
+        if (mfrc522.uid.uidByte[i] == tags_1[i]) {
           val = true;
         } else {
           val = false;
